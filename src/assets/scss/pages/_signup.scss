@@ -1,0 +1,233 @@
+/* app.scss */
+
+.Signup {
+  // height: 100vh;
+  font-family: sans-serif;
+  background-color: white;
+}
+
+.Signup-header {
+  background-color: #f5f5f5;
+  padding: 1rem 2rem;
+}
+
+.hero {
+  height: 100%;
+  width: 100%;
+  padding-left: 65px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background-color: white;
+
+  // position: relative;
+}
+
+.imageDiv {
+  // position: relative;
+  // width: 80%;
+  // height: 100%;
+  background-image: url('../../images/login-background1.webp');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.nonImageDiv {
+  padding-left: 0;
+  padding-right: 0;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
+.backImage {
+  position: absolute;
+  // height: 100%;
+}
+
+.insideDiv {
+  padding-left: 120px;
+  padding-right: 120px;
+  position: relative;
+  z-index: 1;
+}
+
+.insideImage {
+  height: 100%;
+}
+
+.firstCol {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.siteText {
+  position: absolute;
+  top: -45px;
+  left: 140px;
+  color: white;
+  font-weight: 900;
+  font-family: cursive;
+}
+
+.secondCol {
+  background-color: white;
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.welcome-text {
+  text-align-last: left;
+  color: #ed2e24;
+  font-weight: 900;
+}
+
+.description-text {
+  color: black;
+  font-weight: 600;
+}
+
+.terms {
+  color: black;
+  font-size: medium;
+}
+
+.start-button {
+  margin-top: 40px;
+  background: gray;
+  padding-left: 48px;
+  padding-right: 48px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 700;
+}
+
+.start-button-access {
+  margin-top: 40px;
+  background: #ed2e24;
+  padding-left: 48px;
+  padding-right: 48px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 700;
+}
+
+.start-button-access:hover {
+  background: #ed2e24;
+  box-shadow: 1px 1px 10px 0px #ed2e24;
+}
+
+.radioDiv {
+  display: flex;
+}
+
+.radio {
+  font-size: xx-large;
+  color: #ed2e24;
+}
+
+.thirdCol {
+  background-color: white;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.logo {
+  margin-right: 5px;
+}
+
+.stepper-div {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+.stepper-access {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  color: white;
+  background: #ed2e24;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stepper-line-access {
+  flex: 1;
+  height: 4px;
+  background: #ed2e24;
+  margin-top: 18px;
+  margin-bottom: 32px;
+}
+
+.stepper {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  color: white;
+  background: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stepper-line {
+  flex: 1;
+  height: 4px;
+  background: gray;
+  margin-top: 18px;
+  margin-bottom: 32px;
+}
+
+.postcode {
+  width: fit-content;
+}
+
+.inc-dec {
+  width: 50px;
+  height: 50px;
+  border: solid;
+  border-color: gray;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  border-width: thin;
+  border-radius: 0;
+}
+
+.noBorder {
+  border-left: none;
+  border-right: none;
+}
+
+.fadedText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 4px;
+  opacity: 0.6;
+}
+
+.hero h2,
+.hero p {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.App-footer {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  text-align: center;
+}
