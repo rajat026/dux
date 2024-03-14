@@ -128,12 +128,14 @@ function StepTwo(props) {
           </div>
         </>
       )}
-      <Button outline onClick={() => backStep(1)} className="back-button">
-        Back
-      </Button>
-      <Button onClick={() => nextStep(3)} className="start-button-access">
-        Next step
-      </Button>
+      <div className="d-flex">
+        <Button outline onClick={() => backStep(1)} className="back-button">
+          Back
+        </Button>
+        <Button onClick={() => nextStep(3)} className="next-button-access">
+          Next step
+        </Button>
+      </div>
     </div>
   );
 }

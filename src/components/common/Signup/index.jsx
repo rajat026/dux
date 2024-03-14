@@ -41,20 +41,31 @@ function Signup() {
       style={{ backgroundImage: `url(${bg})` }}
       className="image-div d-flex flex-column justify-content-center align-items-center"
     >
-      <Row className="g-0">
-        <Col className="signup-box mx-auto">
-          <img height="4%" className="mb-4" alt="thermann" src={logo} />
-          <Row className="g-0">
-            <Col md="4">
-              <div
-                className="image-banner"
-                style={{ backgroundImage: `url(${insideImage})` }}
-              />
+      <Row className="w-100">
+        <Col md="8" className="signup-box m-auto">
+          <img height="5%" className="mb-4" alt="thermann" src={logo} />
+          <Row>
+            <Col
+              md="4"
+              className="p-0 image-banner"
+              style={{ backgroundImage: `url(${insideImage})` }}
+            >
+              <div>
+                {/* <img
+                  className="image-banner"
+                  alt="left-banner"
+                  src={insideImage}
+                /> */}
+              </div>
             </Col>
-            <Col md="8" className="bg-white position-relative">
+            <Col
+              md="8"
+              className="bg-white position-relative"
+              style={{ height: 'fit-content' }}
+            >
               <Row>
-                <Col md="9">
-                  <div className="p-5">
+                <Col md="9" className="ps-5">
+                  <div>
                     {step === 0 && <StartPage handleStep={handleStep} />}
                     {step === 1 && <StepOne handleStep={handleStep} />}
                     {step === 2 && <StepTwo handleStep={handleStep} />}

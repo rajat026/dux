@@ -47,7 +47,7 @@ function Result(props) {
       <Button
         style={{ marginBottom: 40 }}
         onClick={() => nextStep(1)}
-        className="start-button-access"
+        className="next-button-access"
       >
         Start again
       </Button>

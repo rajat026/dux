@@ -231,7 +231,7 @@ function StepFour(props) {
       <Button outline onClick={() => backStep(3)} className="back-button">
         Back
       </Button>
-      <Button onClick={() => nextStep(5)} className="start-button-access">
+      <Button onClick={() => nextStep(5)} className="next-button-access">
         Submit
       </Button>
     </div>

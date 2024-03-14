@@ -119,7 +119,7 @@ function StepThree(props) {
       <Button outline onClick={() => backStep(2)} className="back-button">
         Back
       </Button>
-      <Button onClick={() => nextStep(4)} className="start-button-access">
+      <Button onClick={() => nextStep(4)} className="next-button-access">
         Next step
       </Button>
     </div>
