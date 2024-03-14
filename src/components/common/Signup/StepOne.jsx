@@ -1,13 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Input, Label } from 'reactstrap';
 
+/* eslint-disable */
 function StepOne(props) {
+  const [postcode, setPostcode] = useState('');
   const [people, setPeople] = useState(0);
-  const [element, setElement] = useState(0);
+  const [element, setElement] = useState('');
   const { handleStep } = props;
+
+  useEffect(() => {
+    if (JSON.parse(window.sessionStorage.getItem('one')) !== null) {
+      setPeople(JSON.parse(window.sessionStorage.getItem('one')).people);
+      setPostcode(JSON.parse(window.sessionStorage.getItem('one')).postcode);
+      setElement(JSON.parse(window.sessionStorage.getItem('one')).element);
+    }
+  }, []);
 
   const nextStep = (value) => {
     handleStep(value);
+    window.sessionStorage.removeItem('one');
+    const data = {
+      people: people,
+      postcode: postcode,
+      element: element,
+    };
+    window.sessionStorage.setItem('one', JSON.stringify(data));
   };
 
   const decreasePeople = () => {
@@ -16,24 +33,16 @@ function StepOne(props) {
     }
   };
 
-  const decreaseElement = () => {
-    if (element > 0) {
-      setElement((prevElement) => prevElement - 1);
-    }
-  };
-
   const increasePeople = () => {
-    if (people >= 0 && people <= 5) {
-      setPeople((prevPeople) => prevPeople + 1);
-    }
+    setPeople((prevPeople) => prevPeople + 1);
   };
 
-  const increaseElement = () => {
-    setElement((prevElement) => prevElement + 1);
+  const handlePostcode = (event) => {
+    setPostcode(event.target.value);
   };
 
   return (
-    <div>
+    <>
       <h2 style={{ marginTop: 40 }} className="welcome-text">
         STEP 1
       </h2>
@@ -44,7 +53,20 @@ function StepOne(props) {
 
       <div>
         <Label>Please enter your postcode</Label>
-        <Input className="postcode" type="text" />
+        <Input
+          className="input-step-one"
+          type="select"
+          value={postcode}
+          onChange={(event) => handlePostcode(event)}
+        >
+          <option value="" disabled selected>
+            eg. 2000
+          </option>
+          <option value="382481">382481</option>
+          <option value="307001">307001</option>
+          <option value="457292">457292</option>
+          <option value="123987">123987</option>
+        </Input>
       </div>
       <br />
       <div>
@@ -57,27 +79,37 @@ function StepOne(props) {
           <Button onClick={() => increasePeople()} className="inc-dec">
             +
           </Button>
-          <span className="fadedText">Up to 6</span>
         </div>
       </div>
       <br />
       <div>
         <Label>Element size</Label>
         <div style={{ display: 'flex' }}>
-          <Button onClick={() => decreaseElement()} className="inc-dec">
-            -
-          </Button>
-          <span className="inc-dec noBorder">{element}</span>
-          <Button onClick={() => increaseElement()} className="inc-dec">
-            +
-          </Button>
+          <Input
+            className="input-step-one-element"
+            type="select"
+            value={element}
+            onChange={(event) => setElement(event.target.value)}
+          >
+            <option value="" disabled selected>
+              size
+            </option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+          </Input>
           <span className="fadedText">KW</span>
         </div>
       </div>
-      <Button onClick={() => nextStep(2)} className="start-button-access">
+      <Button
+        disabled={postcode === '' || element === ''}
+        onClick={() => nextStep(2)}
+        className="start-button-access"
+      >
         Next step
       </Button>
-    </div>
+    </>
   );
 }
 

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Button, Input } from 'reactstrap';
+import React, { useState } from "react";
+import { Button, Input } from "reactstrap";
+/* eslint-disable */
 
 function StartPage(props) {
   const [access, setAccess] = useState(false);
@@ -8,6 +9,8 @@ function StartPage(props) {
   const selectTerm = (event) => {
     if (event.target.checked) {
       setAccess(true);
+    } else {
+      setAccess(false);
     }
   };
 
@@ -20,19 +23,19 @@ function StartPage(props) {
       <h2 style={{ marginTop: 40 }} className="welcome-text">
         WELCOME
       </h2>
-      <h5 style={{ fontSize: 'medium' }} className="description-text">
+      <h5 style={{ fontSize: "medium" }} className="description-text">
         Lets configure your new Thermann Smart Electric water heater and
         maximise your running cost savings!
       </h5>
       <br />
-      <h5 style={{ fontSize: 'medium' }}>
+      <h5 style={{ fontSize: "medium" }}>
         The power to control your bills is in your hands.
       </h5>
-      <h5 style={{ fontSize: 'medium' }}>
+      <h5 style={{ fontSize: "medium" }}>
         Use this calculator to discover the best setting for your new Thermann
         Smart Electric water heater.
       </h5>
-      <h5 style={{ fontSize: 'medium' }}>
+      <h5 style={{ fontSize: "medium" }}>
         Take a few minutes to configure your new water heater and to maximise
         your running cost savings.
       </h5>
@@ -40,7 +43,7 @@ function StartPage(props) {
       <br />
       <div className="radioDiv">
         <Input
-          type="radio"
+          type="checkbox"
           className="radio"
           onChange={(event) => selectTerm(event)}
           style={{ marginTop: 0, marginRight: 6 }}
@@ -57,7 +60,7 @@ function StartPage(props) {
       <Button
         onClick={() => start(1)}
         disabled={!access}
-        className={`${access ? 'start-button-access' : 'start-button'}`}
+        className={`${access ? "start-button-access" : "start-button"}`}
       >
         Start
       </Button>
