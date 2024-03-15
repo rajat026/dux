@@ -57,183 +57,244 @@ function StepFour(props) {
   };
 
   return (
-    <div>
-      <h2 style={{ marginTop: 40 }} className="welcome-text">
-        STEP 4
-      </h2>
-      <h5 style={{ fontSize: 'medium' }} className="description-text">
-        SELECT YOUR TARIFF SYSTEM
-      </h5>
-      <br />
+    <div className="d-flex flex-column justify-content-between h-100">
+      <div>
+        <h2 style={{ marginTop: 40 }} className="welcome-text">
+          STEP 4
+        </h2>
+        <h5 style={{ fontSize: 15 }} className="description-text">
+          SELECT YOUR TARIFF SYSTEM
+        </h5>
+        <br />
 
-      {/* Rate */}
-      <div className="tariff-div">
-        <Input
-          type="radio"
-          className="pv-radio"
-          checked={tariff.rate}
-          onChange={() => {
-            setTariff({ rate: true, time: false, peak: false, other: false });
-            setPeak('');
-            setShoulder('');
-            setControlled('');
-            setOffPeak('');
-          }}
-          style={{ marginRight: 6, marginTop: 0 }}
-        />
-        <span className="type-text">Flat Rate / Single Rate</span>
-        <div style={{ display: 'flex', justifyContent: 'end' }}>
-          <Input
-            disabled={!tariff.rate}
-            type="input"
-            value={rate}
-            onChange={(event) => setRate(event.target.value)}
-            style={{ marginRight: 6, width: '30%' }}
-          />
-          <span className="fadedText">cents/KWh</span>
-        </div>
-      </div>
-      <br />
-
-      {/* Time */}
-      <div className="tariff-div" style={{ display: 'block', height: 155 }}>
-        <div style={{ display: 'flex', alignItems: 'center', marginTop: 8 }}>
+        {/* Rate */}
+        <div className="tariff-div">
           <Input
             type="radio"
             className="pv-radio"
-            checked={tariff.time}
+            checked={tariff.rate}
             onChange={() => {
-              setTariff({ rate: false, time: true, peak: false, other: false });
-              setRate('');
+              setTariff({ rate: true, time: false, peak: false, other: false });
+              setPeak('');
+              setShoulder('');
               setControlled('');
+              setOffPeak('');
             }}
-            style={{ marginRight: 6, marginTop: 0 }}
+            style={{ marginTop: -2 }}
           />
-          <span className="type-text">Time of use</span>
-        </div>
-        <div className="time-div" style={{ marginBottom: 3 }}>
-          <Input
-            type="radio"
-            className="pv-radio"
-            checked={tariff.rate}
-            onChange={() =>
-              setTariff({ rate: true, time: false, peak: false, other: false })
-            }
-            style={{ marginRight: 6, marginTop: 0, visibility: 'hidden' }}
-          />
-          <Label className="type-text">Peak</Label>
+          <span className="type-text">Flat Rate / Single Rate</span>
           <div style={{ display: 'flex', justifyContent: 'end' }}>
             <Input
-              disabled={!tariff.time}
+              disabled={!tariff.rate}
               type="input"
-              value={peak}
-              onChange={(event) => setPeak(event.target.value)}
+              value={rate}
+              onChange={(event) => {
+                const re = new RegExp(/^\d*\.?\d*$/);
+                if (event.target.value === '' || re.test(event.target.value)) {
+                  setRate(event.target.value);
+                }
+              }}
               style={{ marginRight: 6, width: '30%' }}
             />
             <span className="fadedText">cents/KWh</span>
           </div>
         </div>
-        <div className="time-div" style={{ marginTop: 3, marginBottom: 3 }}>
+
+        {/* Time */}
+        <div
+          className="tariff-div my-1"
+          style={{ display: 'block', height: 155 }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', marginTop: 8 }}>
+            <Input
+              type="radio"
+              className="pv-radio"
+              checked={tariff.time}
+              onChange={() => {
+                setTariff({
+                  rate: false,
+                  time: true,
+                  peak: false,
+                  other: false,
+                });
+                setRate('');
+                setControlled('');
+              }}
+              style={{ marginTop: -2 }}
+            />
+            <span className="type-text">Time of use</span>
+          </div>
+          <div className="time-div" style={{ marginBottom: 3 }}>
+            <Input
+              type="radio"
+              className="pv-radio"
+              checked={tariff.rate}
+              onChange={() =>
+                setTariff({
+                  rate: true,
+                  time: false,
+                  peak: false,
+                  other: false,
+                })
+              }
+              style={{ marginTop: 0, visibility: 'hidden' }}
+            />
+            <Label className="type-text">Peak</Label>
+            <div style={{ display: 'flex', justifyContent: 'end' }}>
+              <Input
+                disabled={!tariff.time}
+                type="input"
+                value={peak}
+                onChange={(event) => {
+                  const re = new RegExp(/^\d*\.?\d*$/);
+                  if (
+                    event.target.value === '' ||
+                    re.test(event.target.value)
+                  ) {
+                    setPeak(event.target.value);
+                  }
+                }}
+                style={{ marginRight: 6, width: '30%' }}
+              />
+              <span className="fadedText">cents/KWh</span>
+            </div>
+          </div>
+          <div className="time-div" style={{ marginTop: 3, marginBottom: 3 }}>
+            <Input
+              type="radio"
+              className="pv-radio"
+              checked={tariff.rate}
+              onChange={() =>
+                setTariff({
+                  rate: true,
+                  time: false,
+                  peak: false,
+                  other: false,
+                })
+              }
+              style={{ marginTop: 0, visibility: 'hidden' }}
+            />
+            <Label className="type-text">Shoulder</Label>
+            <div style={{ display: 'flex', justifyContent: 'end' }}>
+              <Input
+                disabled={!tariff.time}
+                type="input"
+                value={shoulder}
+                onChange={(event) => {
+                  const re = new RegExp(/^\d*\.?\d*$/);
+                  if (
+                    event.target.value === '' ||
+                    re.test(event.target.value)
+                  ) {
+                    setShoulder(event.target.value);
+                  }
+                }}
+                style={{ marginRight: 6, width: '30%' }}
+              />
+              <span className="fadedText">cents/KWh</span>
+            </div>
+          </div>
+          <div className="time-div" style={{ marginBottom: 3 }}>
+            <Input
+              type="radio"
+              className="pv-radio"
+              checked={tariff.rate}
+              onChange={() =>
+                setTariff({
+                  rate: true,
+                  time: false,
+                  peak: false,
+                  other: false,
+                })
+              }
+              style={{ marginTop: 0, visibility: 'hidden' }}
+            />
+            <Label className="type-text">Off peak</Label>
+            <div style={{ display: 'flex', justifyContent: 'end' }}>
+              <Input
+                disabled={!tariff.time}
+                type="input"
+                value={offPeak}
+                onChange={(event) => {
+                  const re = new RegExp(/^\d*\.?\d*$/);
+                  if (
+                    event.target.value === '' ||
+                    re.test(event.target.value)
+                  ) {
+                    setOffPeak(event.target.value);
+                  }
+                }}
+                style={{ marginRight: 6, width: '30%' }}
+              />
+              <span className="fadedText">cents/KWh</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Peak */}
+        <div className="tariff-div">
           <Input
             type="radio"
             className="pv-radio"
-            checked={tariff.rate}
-            onChange={() =>
-              setTariff({ rate: true, time: false, peak: false, other: false })
-            }
-            style={{ marginRight: 6, marginTop: 0, visibility: 'hidden' }}
+            checked={tariff.peak}
+            onChange={() => {
+              setTariff({ rate: false, time: false, peak: true, other: false });
+              setPeak('');
+              setShoulder('');
+              setRate('');
+              setOffPeak('');
+            }}
+            style={{ marginTop: -2 }}
           />
-          <Label className="type-text">Shoulder</Label>
+          <span className="type-text">Controlled load off peak</span>
           <div style={{ display: 'flex', justifyContent: 'end' }}>
             <Input
-              disabled={!tariff.time}
+              disabled={!tariff.peak}
               type="input"
-              value={shoulder}
-              onChange={(event) => setShoulder(event.target.value)}
+              value={controlled}
+              onChange={(event) => {
+                const re = new RegExp(/^\d*\.?\d*$/);
+                if (event.target.value === '' || re.test(event.target.value)) {
+                  setControlled(event.target.value);
+                }
+              }}
               style={{ marginRight: 6, width: '30%' }}
             />
             <span className="fadedText">cents/KWh</span>
           </div>
         </div>
-        <div className="time-div" style={{ marginBottom: 3 }}>
+
+        {/* Other */}
+        <div className="tariff-div my-1" style={{ justifyContent: 'start' }}>
           <Input
             type="radio"
             className="pv-radio"
-            checked={tariff.rate}
-            onChange={() =>
-              setTariff({ rate: true, time: false, peak: false, other: false })
-            }
-            style={{ marginRight: 6, marginTop: 0, visibility: 'hidden' }}
+            checked={tariff.other}
+            onChange={() => {
+              setTariff({ rate: false, time: false, peak: false, other: true });
+              setRate('');
+              setPeak('');
+              setShoulder('');
+              setRate('');
+              setOffPeak('');
+            }}
+            style={{ marginTop: -2 }}
           />
-          <Label className="type-text">Off peak</Label>
-          <div style={{ display: 'flex', justifyContent: 'end' }}>
-            <Input
-              disabled={!tariff.time}
-              type="input"
-              value={offPeak}
-              onChange={(event) => setOffPeak(event.target.value)}
-              style={{ marginRight: 6, width: '30%' }}
-            />
-            <span className="fadedText">cents/KWh</span>
-          </div>
+          <span className="type-text">Don't know</span>
         </div>
       </div>
-      <br />
-
-      {/* Peak */}
-      <div className="tariff-div">
-        <Input
-          type="radio"
-          className="pv-radio"
-          checked={tariff.peak}
-          onChange={() => {
-            setTariff({ rate: false, time: false, peak: true, other: false });
-            setPeak('');
-            setShoulder('');
-            setRate('');
-            setOffPeak('');
-          }}
-          style={{ marginRight: 6, marginTop: 0 }}
-        />
-        <span className="type-text">Controlled load off peak</span>
-        <div style={{ display: 'flex', justifyContent: 'end' }}>
-          <Input
-            disabled={!tariff.peak}
-            type="input"
-            value={controlled}
-            onChange={(event) => setControlled(event.target.value)}
-            style={{ marginRight: 6, width: '30%' }}
-          />
-          <span className="fadedText">cents/KWh</span>
-        </div>
+      <div>
+        <Button
+          outline
+          onClick={() => backStep(3)}
+          className="back-button mt-0"
+        >
+          Back
+        </Button>
+        <Button onClick={() => nextStep(5)} className="next-button-access mt-0">
+          Submit
+        </Button>
       </div>
-      <br />
-
-      {/* Other */}
-      <div className="tariff-div" style={{ justifyContent: 'start' }}>
-        <Input
-          type="radio"
-          className="pv-radio"
-          checked={tariff.other}
-          onChange={() => {
-            setTariff({ rate: false, time: false, peak: false, other: true });
-            setRate('');
-            setPeak('');
-            setShoulder('');
-            setRate('');
-            setOffPeak('');
-          }}
-          style={{ marginRight: 6, marginTop: 0 }}
-        />
-        <span className="type-text">Don't know</span>
-      </div>
-
-      <Button outline onClick={() => backStep(3)} className="back-button">
-        Back
-      </Button>
-      <Button onClick={() => nextStep(5)} className="next-button-access">
-        Submit
-      </Button>
     </div>
   );
 }

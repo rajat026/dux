@@ -44,37 +44,29 @@ function Signup() {
       <Row className="w-100">
         <Col md="8" className="signup-box m-auto">
           <img height="5%" className="mb-4" alt="thermann" src={logo} />
-          <Row>
+          <Row className="m-auto">
             <Col
               md="4"
               className="p-0 image-banner"
               style={{ backgroundImage: `url(${insideImage})` }}
-            >
-              <div>
-                {/* <img
-                  className="image-banner"
-                  alt="left-banner"
-                  src={insideImage}
-                /> */}
-              </div>
-            </Col>
+            ></Col>
             <Col
               md="8"
               className="bg-white position-relative"
               style={{ height: 'fit-content' }}
             >
-              <Row>
-                <Col md="9" className="ps-5">
-                  <div>
-                    {step === 0 && <StartPage handleStep={handleStep} />}
-                    {step === 1 && <StepOne handleStep={handleStep} />}
-                    {step === 2 && <StepTwo handleStep={handleStep} />}
-                    {step === 3 && <StepThree handleStep={handleStep} />}
-                    {step === 4 && <StepFour handleStep={handleStep} />}
-                    {step === 5 && <Result handleStep={handleStep} />}
-                  </div>
+              <Row style={{ height: 630 }}>
+                <Col md="9" className="ps-5 pe-5" style={{ height: '83%' }}>
+                  {/* <div> */}
+                  {step === 0 && <StartPage handleStep={handleStep} />}
+                  {step === 1 && <StepOne handleStep={handleStep} />}
+                  {step === 2 && <StepTwo handleStep={handleStep} />}
+                  {step === 3 && <StepThree handleStep={handleStep} />}
+                  {step === 4 && <StepFour handleStep={handleStep} />}
+                  {step === 5 && <Result handleStep={handleStep} />}
+                  {/* </div> */}
                 </Col>
-                <Col md="3" className="electric">
+                <Col md="3" className="electric pb-4">
                   <div className="image-electric">
                     <img alt="electric" src={electric} />
                   </div>
