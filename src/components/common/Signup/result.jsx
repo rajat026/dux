@@ -50,7 +50,7 @@ function Result(props) {
         </div>
       </div>
       <div>
-        <Button onClick={() => nextStep(1)} className="next-button-access">
+        <Button outline onClick={() => nextStep(1)} className="back-button">
           Start again
         </Button>
       </div>
